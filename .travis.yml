@@ -1,0 +1,20 @@
+language: python
+sudo: false
+
+os:
+  - linux
+  - osx
+
+python:
+  - 2.7
+  - 3.3
+  - 3.4
+  - 3.5
+
+env:
+  - TOXENV="py${PYTHON_VERSION//./}"
+
+install:
+  - pip install tox
+
+script: tox
