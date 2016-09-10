@@ -1,19 +1,27 @@
 language: python
 
-os:
-  - linux
-  - osx
+#os:
+#  - linux
 
-python:
-  - 2.7
-  - 3.3
-  - 3.4
-  - 3.5
+#python:
+#  - 2.7
+#  - 3.3
+#  - 3.4
+#  - 3.5
+
+matrix:
+  include:
+    - os: osx
+      language: generic
+      python: 3.4
+      env: TOXENV=py34
 
 env:
   - TOXENV="py${PYTHON_VERSION//./}"
 
 install:
+  - ./.travis/install-python-on-osx.sh
+  - source ~/.venv/bin/activate
   - pip install tox
 
 script: tox
