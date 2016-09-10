@@ -11,8 +11,10 @@ with open('jsonformat/__init__.py', 'rb') as f:
 setup(
     name='jsonformat',
     version=version,
-    scripts=['bin/jsonformat'],
     packages=find_packages(exclude=('tests')),
+    entry_points={
+        'console_scripts': ['jsonformat=jsonformat.cli:cli'],
+    },
     install_requires=[
         'click >= 6.0',
     ],
